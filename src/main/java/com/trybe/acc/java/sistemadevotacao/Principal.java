@@ -10,6 +10,7 @@ public class Principal {
    * Metodo Main.
    */
   public static void main(String[] args) {
+    GerenciamentoVotacao gerenciamento = new GerenciamentoVotacao();
     Scanner scanner = new Scanner(System.in);
     short log = 0;
     do {
@@ -23,6 +24,7 @@ public class Principal {
         String canditadoName = scanner.next();
         imprime("Entre com o número da pessoa candidata:");
         short candidatoNumero = scanner.nextShort();
+        gerenciamento.cadastrarPessoaCandidata(canditadoName, candidatoNumero);
       } else if (log != 1 && log != 2) {
         imprime("Entre com uma opção válida!");
       }
@@ -41,7 +43,7 @@ public class Principal {
         String eleitorName = scanner.next();
         imprime("Entre com o cpf da pessoa eleitora:");
         String eleitorCpf = scanner.next();
-
+        gerenciamento.cadastrarPessoaEleitora(eleitorName, eleitorCpf);
       } else if (log != 1 && log != 2) {
         imprime("Entre com uma opção válida!");
       }
