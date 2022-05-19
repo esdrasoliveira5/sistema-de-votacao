@@ -61,13 +61,11 @@ public class Principal {
         String eleitorCpf = scanner.next();
         imprime("Entre com o número da pessoa candidata:");
         short candidatoNumero = scanner.nextShort();
-
+        gerenciamento.votar(eleitorCpf, candidatoNumero);
       } else if (log == 2) {
-        imprime("Nome: Maria - 1 votos ( 100.0% )");
-        imprime("Total de votos: 1");
+        gerenciamento.mostrarResultado();
       } else if (log == 3) {
-        imprime("Nome: Maria - 1 votos ( 100.0% )");
-        imprime("Total de votos: 1");
+        gerenciamento.mostrarResultado();
       } else if (log != 1 && log != 2 && log != 3) {
         imprime("Entre com uma opção válida!");
       }

@@ -57,15 +57,49 @@ public class GerenciamentoVotacao {
     }
   }
 
+  /**
+   * Metodo Votar.
+   */
   public void votar(String cpfPessoaEleitora, int numeroPessoaCandidata) {
+    System.out.println(cpfComputado.contains(cpfPessoaEleitora));
 
+    if (cpfComputado.contains(cpfPessoaEleitora)) {
+      System.out.println("Pessoa eleitora já votou!");
+    } else {
+      cpfComputado.add(cpfPessoaEleitora);
+      int total = pessoasCandidatas.size();
+      for (int i = 0; i < total; i += 1) {
+        if (pessoasCandidatas.get(i).numero == numeroPessoaCandidata) {
+          pessoasCandidatas.get(i).receberVoto();
+        }
+      }
+    }
   }
 
+  /**
+   * Mostrar Resultados.
+   */
   public void mostrarResultado() {
-
+    int votos = cpfComputado.size();
+    if (votos == 0) {
+      System.out.println("É preciso ter pelo menos um voto para mostrar o resultado.");
+    } else {
+      int total = pessoasCandidatas.size();
+      for (int i = 0; i < total; i += 1) {
+        calcularPorcentagemVotos(i);
+      }
+      System.out.println("Total de votos: " + votos);
+    }
   }
 
   private void calcularPorcentagemVotos(int indice) {
+    double totalVotos = cpfComputado.size();
+    double votos = pessoasCandidatas.get(indice).getVotos();
+    String nome = pessoasCandidatas.get(indice).getNome();
+
+    double porcentagem = (votos / totalVotos) * 100;
+    System.out.println("Nome: " + nome + " - " + votos + " votos " + "( " + porcentagem + " )");
+
 
   }
 }
